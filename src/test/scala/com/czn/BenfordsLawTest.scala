@@ -25,7 +25,7 @@ class BenfordsLawTest extends AnyFlatSpec with Matchers {
     BenfordsLaw.sumValues(map) shouldEqual 344
   }
 
-  "Given a known distribution" should "confirm that it conforms to Benfords law" in {
+  "Given a known distribution (fibonacci)" should "confirm that it conforms to Benfords law" in {
 
     val fibSequence = (fibs take 500).toList
 
@@ -40,6 +40,13 @@ class BenfordsLawTest extends AnyFlatSpec with Matchers {
     val distributionMap = NumberUtil.leadingDigitOccurrenceCount(fibSequence.iterator)
     val mapWithMissingKey = distributionMap - 5
     val doesConform = BenfordsLaw.doesConform(mapWithMissingKey)
+    doesConform shouldBe false
+  }
+  "Given a known distribution (linear increment)" should "that it does not conform to Benfords law" in {
+
+    val linearDistribution = (1 to 5000).map(BigInt(_)).toList
+
+    val doesConform = BenfordsLaw.doesConform(NumberUtil.leadingDigitOccurrenceCount(linearDistribution.iterator))
     doesConform shouldBe false
   }
 
