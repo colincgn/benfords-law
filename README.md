@@ -19,13 +19,13 @@ docker run -it --rm -v $PWD:/app -w /app mozilla/sbt sbt "run sampleData.txt"
 If you have Java 1.8 then you can run the application as follows
  
 ```
-sbt "run sampleData.txt"
+./sbt "run sampleData.txt"
 ```
 
 #### Packaging the application up
 
 ```
-sbt stage
+./sbt stage
 ```
 
 This will package the application up with executable scripts
@@ -45,7 +45,7 @@ Success!  Conforms to Benfords Law
 
 To run all tests 
 ```
-sbt test
+./sbt test
 ```
 
 Or, from Docker
